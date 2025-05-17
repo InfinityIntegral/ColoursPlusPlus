@@ -1,6 +1,7 @@
 #include "sggenerallibrary.h"
 #include <QWidget>
 #include <QRegularExpression>
+#include "sgcentralmanagement.h"
 
 QString SGGeneralLibrary::stylesheetfieldbackgroundcolour = QString("background-color");
 QString SGGeneralLibrary::stylesheetfieldtextcolour = QString("color");
@@ -29,4 +30,23 @@ void SGGeneralLibrary::updatefontsize(QWidget *obj){
 
 QString SGGeneralLibrary::ColourUintToCSS(uint c){
     return ("rgba(" + QString::number(0xFF & (c >> 24)) + ", " + QString::number(0xFF & (c >> 16)) + ", " + QString::number(0xFF & (c >> 8)) + "," + QString::number(0xFF & c) + ")");
+}
+
+void SGGeneralLibrary::setscrollviewstylesheet(QWidget *obj){
+    (*obj).setStyleSheet((R"(
+        QScrollBar:vertical{
+            width: 20px;
+        }
+        QScrollBar::handle:vertical{
+            background: )" + SGCentralManagement::colour1 + R"(;
+        }
+        QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical{
+            background: )" + SGCentralManagement::colour3 + R"(;
+        }
+    )"));
+}
+
+void SGGeneralLibrary::updatescrollbarwidth(QWidget *obj){
+    QString s = QString::number(2.0f / 3.0f * SGCentralManagement::sizeunit) + "px";
+    SGGeneralLibrary::SetUIStyle(obj, SGGeneralLibrary::stylesheetfieldscrollbarwidth, s);
 }

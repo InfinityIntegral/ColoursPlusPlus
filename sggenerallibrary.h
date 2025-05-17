@@ -19,6 +19,8 @@ public:
     static QString stylesheetnoborder;
     static void updatefontsize(QWidget* obj);
     static QString ColourUintToCSS(uint c);
+    static void setscrollviewstylesheet(QWidget* obj);
+    static void updatescrollbarwidth(QWidget* obj);
     static float plusinf;
     static float minusinf;
 private:
