@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/SingScript.sg.otf</file>
+    </qresource>
+</RCC>
