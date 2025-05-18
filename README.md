@@ -24,7 +24,8 @@ You can view stygian, self-luminous, and hyperbolic impossible colours of your c
 ## What to expect...
 - [x] choice of colour
 - [ ] viewing impossible colours
-- [ ] stygian colours
+:
+	- [ ] stygian colours
 	- [ ] self-luminous colours
 	- [ ] hyperbolic colours
 - [ ] scientific explanation
