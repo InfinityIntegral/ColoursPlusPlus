@@ -24,13 +24,12 @@ You can view stygian, self-luminous, and hyperbolic impossible colours of your c
 ## What to expect...
 - [x] choice of colour
 - [ ] viewing impossible colours
-:
 	- [ ] stygian colours
 	- [ ] self-luminous colours
 	- [ ] hyperbolic colours
 - [ ] scientific explanation
 - [ ] RGB coordinates estimation
-- [ ] report on RGB coordinates estimation algorithm
+     - [ ] report on RGB coordinates estimation algorithm
 
 ## Contributing...
 This is a graded school project, for obvious reasons only I can contribute.
