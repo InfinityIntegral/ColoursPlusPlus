@@ -11,6 +11,7 @@ public:
     void sendsignals();
 signals:
     void updatescreen();
+    void updateintropage();
 };
 
 #endif // SGSIGNALSEMITTER_H

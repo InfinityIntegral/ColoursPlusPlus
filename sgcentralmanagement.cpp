@@ -3,6 +3,7 @@
 #include <QFontDatabase>
 #include "sggenerallibrary.h"
 #include "sgstatusbarmanagement.h"
+#include "sgintropagemanagement.h"
 
 QString SGCentralManagement::colour0 = "rgba(255, 255, 255, 0)";
 QString SGCentralManagement::colour1 = "rgba(255, 0, 200, 255)";
@@ -31,9 +32,11 @@ void SGCentralManagement::initialise(){
     SGStatusBarManagement::initialisestatusbar();
     SGCentralManagement::mainbackground = new SGWidget000451103(SGCentralManagement::rootwindow, 0.0f, 1.0f, 1.0f, 1.0f);
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updatescreen, SGCentralManagement::mainbackground, &SGWidget000451103::ResizeObj);
+
+    SGIntroPageManagement::initialiseintropage();
 }
 
 void SGCentralManagement::terminate(){
     delete SGCentralManagement::rootwindow;
-    //delete SGGeneralLibrary::SingScriptSG;
+    delete SGGeneralLibrary::SingScriptSG;
 }

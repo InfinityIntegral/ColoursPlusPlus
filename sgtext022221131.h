@@ -11,7 +11,6 @@ public:
     SGText022221131(QWidget *parent, QString s, float x, float y);
     float x;
     float y;
-
 public slots:
     void ResizeObj();
 };
