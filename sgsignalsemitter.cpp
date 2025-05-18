@@ -1,5 +1,6 @@
 #include "sgsignalsemitter.h"
 #include "sgintropagemanagement.h"
+#include "sgselectpagemanagement.h"
 
 SGSignalsEmitter::SGSignalsEmitter(){
 
@@ -7,5 +8,6 @@ SGSignalsEmitter::SGSignalsEmitter(){
 
 void SGSignalsEmitter::sendsignals(){
     emit (*this).updatescreen();
-    if(SGIntroPageManagement::intropagescrollview != nullptr && (*SGIntroPageManagement::intropagescrollview).isVisible()){emit (*this).updateintropage();}
+    if(SGIntroPageManagement::intropagebackground != nullptr && (*SGIntroPageManagement::intropagebackground).isVisible()){emit (*this).updateintropage();}
+    if(SGSelectPageManagement::selectpagebackground != nullptr && (*SGSelectPageManagement::selectpagebackground).isVisible()){emit (*this).updateselectpage();}
 }

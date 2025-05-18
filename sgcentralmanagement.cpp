@@ -4,6 +4,7 @@
 #include "sggenerallibrary.h"
 #include "sgstatusbarmanagement.h"
 #include "sgintropagemanagement.h"
+#include "sgselectpagemanagement.h"
 
 QString SGCentralManagement::colour0 = "rgba(255, 255, 255, 0)";
 QString SGCentralManagement::colour1 = "rgba(255, 0, 200, 255)";
@@ -34,6 +35,8 @@ void SGCentralManagement::initialise(){
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updatescreen, SGCentralManagement::mainbackground, &SGWidget000451103::ResizeObj);
 
     SGIntroPageManagement::initialiseintropage();
+    SGSelectPageManagement::initialiseselectpage();
+    (*SGSelectPageManagement::selectpagebackground).hide();
 }
 
 void SGCentralManagement::terminate(){

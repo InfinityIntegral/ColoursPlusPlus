@@ -19,10 +19,13 @@ public:
     static QString stylesheetnoborder;
     static void updatefontsize(QWidget* obj);
     static QString ColourUintToCSS(uint c);
+    static uint ColourCSSToUint(QString& s);
     static void setscrollviewstylesheet(QWidget* obj);
     static void updatescrollbarwidth(QWidget* obj);
     static float plusinf;
     static float minusinf;
+
+    static uint maxsaturatedcolour(float hue);
 private:
     SGGeneralLibrary(){}
     ~SGGeneralLibrary(){}

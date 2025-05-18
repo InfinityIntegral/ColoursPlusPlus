@@ -12,6 +12,7 @@ public:
 signals:
     void updatescreen();
     void updateintropage();
+    void updateselectpage();
 };
 
 #endif // SGSIGNALSEMITTER_H

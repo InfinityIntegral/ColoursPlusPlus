@@ -22,7 +22,7 @@ To build it yourself for another platform, pls copy paste all the code here into
 You can view stygian, self-luminous, and hyperbolic impossible colours of your choice. The application contains clear instructions for usage. The application also contains an explanation of why the impossible colour is observed and the estimated RGB coordinates of the impossible colour. Note that impossible colours can have RGB coordinates exceeding the range [0, 255].
 
 ## What to expect...
-- [ ] choice of colour
+- [x] choice of colour
 - [ ] viewing impossible colours
 - [ ] stygian colours
 	- [ ] self-luminous colours

@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>assets/SingScript.sg.otf</file>
+        <file>assets/hueselect.vert</file>
+        <file>assets/hueselect.frag</file>
     </qresource>
 </RCC>

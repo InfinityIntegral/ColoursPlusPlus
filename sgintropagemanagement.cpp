@@ -1,5 +1,6 @@
 #include "sgintropagemanagement.h"
 #include "sgcentralmanagement.h"
+#include "sgselectpagemanagement.h"
 
 SGWidget000221103* SGIntroPageManagement::intropagebackground = nullptr;
 SGScrollView000231100* SGIntroPageManagement::intropagescrollview = nullptr;
@@ -32,4 +33,5 @@ void SGIntroPageManagement::initialiseintropage(){
 
 void SGIntroPageManagement::tonextpage(){
     (*SGIntroPageManagement::intropagebackground).hide();
+    SGSelectPageManagement::initialiseselectpage();
 }
