@@ -13,6 +13,7 @@ class SGIllusionManagement : public QObject
 public:
     static void initialiseillusionpage();
     static SGWidget000221103* illusionpagebackground;
+    static SGWidget000221103* illusionpagewhite;
     static int t;
     static QTimer* timer;
     static void refreshtimer();

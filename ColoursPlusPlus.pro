@@ -18,6 +18,7 @@ SOURCES += \
     sgillusionmanagement.cpp \
     sginstructionspagemanagement.cpp \
     sgintropagemanagement.cpp \
+    sglayoutexplainpage.cpp \
     sglayoutinstructionspage.cpp \
     sglayoutintropage.cpp \
     sglayoutselectpage.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     sgillusionmanagement.h \
     sginstructionspagemanagement.h \
     sgintropagemanagement.h \
+    sglayoutexplainpage.h \
     sglayoutinstructionspage.h \
     sglayoutintropage.h \
     sglayoutselectpage.h \
