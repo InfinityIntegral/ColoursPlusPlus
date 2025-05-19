@@ -12,6 +12,7 @@ SOURCES += \
     main.cpp \
     sgcentralmanagement.cpp \
     sgcomplementarycolourrenderer.cpp \
+    sgexplainpagemanagement.cpp \
     sggenerallibrary.cpp \
     sghueselectrenderer.cpp \
     sgillusionmanagement.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     openglincludes.h \
     sgcentralmanagement.h \
     sgcomplementarycolourrenderer.h \
+    sgexplainpagemanagement.h \
     sggenerallibrary.h \
     sghueselectrenderer.h \
     sgillusionmanagement.h \

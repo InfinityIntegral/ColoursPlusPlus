@@ -15,6 +15,7 @@ signals:
     void updateselectpage();
     void updateinstructionspage();
     void updateillusionpage();
+    void updateexplainpage();
 };
 
 #endif // SGSIGNALSEMITTER_H
