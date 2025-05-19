@@ -13,7 +13,9 @@ SOURCES += \
     sgcentralmanagement.cpp \
     sggenerallibrary.cpp \
     sghueselectrenderer.cpp \
+    sginstructionspagemanagement.cpp \
     sgintropagemanagement.cpp \
+    sglayoutinstructionspage.cpp \
     sglayoutintropage.cpp \
     sglayoutselectpage.cpp \
     sgrootwindow.cpp \
@@ -37,7 +39,9 @@ HEADERS += \
     sgcentralmanagement.h \
     sggenerallibrary.h \
     sghueselectrenderer.h \
+    sginstructionspagemanagement.h \
     sgintropagemanagement.h \
+    sglayoutinstructionspage.h \
     sglayoutintropage.h \
     sglayoutselectpage.h \
     sgrootwindow.h \

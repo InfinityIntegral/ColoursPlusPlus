@@ -13,6 +13,7 @@ signals:
     void updatescreen();
     void updateintropage();
     void updateselectpage();
+    void updateinstructionspage();
 };
 
 #endif // SGSIGNALSEMITTER_H

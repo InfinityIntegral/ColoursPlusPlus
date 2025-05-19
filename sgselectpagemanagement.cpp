@@ -2,6 +2,7 @@
 #include "sgcentralmanagement.h"
 #include "sggenerallibrary.h"
 #include "sgintropagemanagement.h"
+#include "sginstructionspagemanagement.h"
 
 SGWidget000221103* SGSelectPageManagement::selectpagebackground = nullptr;
 SGTextButton022314332* SGSelectPageManagement::backbutton = nullptr;
@@ -38,6 +39,7 @@ void SGSelectPageManagement::initialiseselectpage(){
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateselectpage, SGSelectPageManagement::selectpagescrollview, &SGScrollView000231100::ResizeObj);
     SGSelectPageManagement::selectpagelayout = new SGLayoutSelectPage(SGSelectPageManagement::selectpagescrollview);
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateselectpage, SGSelectPageManagement::selectpagelayout, &SGLayoutSelectPage::ReceiveUpdateCall);
+    (*SGSelectPageManagement::selectpagescrollview).setWidget(SGSelectPageManagement::selectpagelayout);
     SGSelectPageManagement::typeprompt = new SGText012110021(SGSelectPageManagement::selectpagelayout, "choose type of impossible colour...", 10.5f, 1.0f);
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateselectpage, SGSelectPageManagement::typeprompt, &SGText012110021::ResizeObj);
     SGSelectPageManagement::stygianbutton = new SGTextButton022110032(SGSelectPageManagement::selectpagelayout, "stygian", 2.5f, 1.0f);
@@ -62,6 +64,7 @@ void SGSelectPageManagement::tolastpage(){
 
 void SGSelectPageManagement::tonextpage(){
     (*SGSelectPageManagement::selectpagebackground).hide();
+    SGInstructionsPageManagement::initialiseinstructionspage();
 }
 
 void SGSelectPageManagement::setstygian(){

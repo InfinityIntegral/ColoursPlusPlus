@@ -24,5 +24,6 @@ void SGLayoutIntroPage::ResizeObj(){
     y += 2.0f;
     (*SGIntroPageManagement::infotext).move(x * SGCentralManagement::sizeunit, y * SGCentralManagement::sizeunit);
     y += ((float)(*SGIntroPageManagement::infotext).size().height()) / SGCentralManagement::sizeunit;
+    y += 0.5f;
     (*this).resize(QSize(w * SGCentralManagement::sizeunit, y * SGCentralManagement::sizeunit));
 }
