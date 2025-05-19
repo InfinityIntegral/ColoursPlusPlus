@@ -11,8 +11,10 @@ DISTFILES += \
 SOURCES += \
     main.cpp \
     sgcentralmanagement.cpp \
+    sgcomplementarycolourrenderer.cpp \
     sggenerallibrary.cpp \
     sghueselectrenderer.cpp \
+    sgillusionmanagement.cpp \
     sginstructionspagemanagement.cpp \
     sgintropagemanagement.cpp \
     sglayoutinstructionspage.cpp \
@@ -31,14 +33,17 @@ SOURCES += \
     sgtextbutton022211332.cpp \
     sgtextbutton022314332.cpp \
     sgwidget000221103.cpp \
+    sgwidget000311104.cpp \
     sgwidget000411102.cpp \
     sgwidget000451103.cpp
 
 HEADERS += \
     openglincludes.h \
     sgcentralmanagement.h \
+    sgcomplementarycolourrenderer.h \
     sggenerallibrary.h \
     sghueselectrenderer.h \
+    sgillusionmanagement.h \
     sginstructionspagemanagement.h \
     sgintropagemanagement.h \
     sglayoutinstructionspage.h \
@@ -57,6 +62,7 @@ HEADERS += \
     sgtextbutton022211332.h \
     sgtextbutton022314332.h \
     sgwidget000221103.h \
+    sgwidget000311104.h \
     sgwidget000411102.h \
     sgwidget000451103.h
 

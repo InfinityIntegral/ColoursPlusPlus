@@ -3,5 +3,8 @@
         <file>assets/SingScript.sg.otf</file>
         <file>assets/hueselect.vert</file>
         <file>assets/hueselect.frag</file>
+        <file>assets/complementarycolour.vert</file>
+        <file>assets/complementarycolour.frag</file>
+        <file>assets/05524Flogo.png</file>
     </qresource>
 </RCC>

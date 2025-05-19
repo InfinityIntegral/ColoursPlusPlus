@@ -1,6 +1,7 @@
 #include "sginstructionspagemanagement.h"
 #include "sgcentralmanagement.h"
 #include "sggenerallibrary.h"
+#include "sgillusionmanagement.h"
 
 SGWidget000221103* SGInstructionsPageManagement::instructionspagebackground = nullptr;
 SGTextButton022211332* SGInstructionsPageManagement::continuebutton = nullptr;
@@ -25,12 +26,12 @@ void SGInstructionsPageManagement::initialiseinstructionspage(){
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateinstructionspage, SGInstructionsPageManagement::instructionspagelayout, &SGLayoutInstructionsPage::ReceiveUpdateCall);
     (*SGInstructionsPageManagement::instructionspagescrollview).setWidget(SGInstructionsPageManagement::instructionspagelayout);
     (*SGInstructionsPageManagement::instructionspagelayout).ReceiveUpdateCall();
-    QString infostring = "    After pressing the continue button, pls look at the circle that will be displayed on screen. Look at the center of the circle and do not blink. After the circle disappears in 20 seconds, continuing to look at the screen will allow you to see the impossible colour.";
+    QString infostring = "    After pressing the continue button, pls look at the circle that will be displayed on screen. Look at the center of the circle and do not blink. After the circle disappears in 20 seconds, continuing to look at the screen will allow you to see the impossible colour.\n    For best effect, set your screen brightness to maximum and do not focus your eyes throughout the visualisation.";
     SGInstructionsPageManagement::instructionstext = new SGText011260021(SGInstructionsPageManagement::instructionspagelayout, infostring, 1.0f);
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateinstructionspage, SGInstructionsPageManagement::instructionstext, &SGText011260021::ResizeObj);
-    SGGeneralLibrary::SetUIStyle(SGInstructionsPageManagement::instructionspagelayout, SGGeneralLibrary::stylesheetfieldbackgroundcolour, SGCentralManagement::colour3);
 }
 
 void SGInstructionsPageManagement::tonextpage(){
     (*SGInstructionsPageManagement::instructionspagebackground).hide();
+    SGIllusionManagement::initialiseillusionpage();
 }

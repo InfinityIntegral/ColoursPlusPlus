@@ -23,16 +23,16 @@ You can view stygian, self-luminous, and hyperbolic impossible colours of your c
 
 ## What to expect...
 - [x] choice of colour
-- [ ] viewing impossible colours
-	- [ ] stygian colours
-	- [ ] self-luminous colours
-	- [ ] hyperbolic colours
+- [x] viewing impossible colours
+	- [x] stygian colours
+	- [x] self-luminous colours
+	- [x] hyperbolic colours
 - [ ] scientific explanation
 - [ ] RGB coordinates estimation
      - [ ] report on RGB coordinates estimation algorithm
 
 ## Contributing...
-This is a graded school project, for obvious reasons only I can contribute.
+This is a graded school project, it is not accepting any contributions except those from me.
 
 ### Who contributed the most...
 student 05524F (InfinityIntegral)
@@ -45,7 +45,9 @@ student 05524F (InfinityIntegral)
 This software is distributed under the MIT License. For more information, pls see LICENSE.txt
 
 ## Contact me...
-I do not see why you would need to request changes to a graded school project.
+Choose one of the following
+- email to infinityintegral333@gmail.com
+- message @05524F.sg on Instagram
 
 ## Made possible by...
 - the README format is inspired by Best-README-Template, which can be found at https://github.com/othneildrew/Best-README-Template

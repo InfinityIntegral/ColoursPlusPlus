@@ -18,7 +18,7 @@ SGHueSelectRenderer::~SGHueSelectRenderer(){
 
 void SGHueSelectRenderer::initializeGL(){
     initializeOpenGLFunctions();
-    glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     (*this).setAttribute(Qt::WA_AcceptTouchEvents);
 
     vertexshader = new QOpenGLShader(QOpenGLShader::Vertex, this);
