@@ -6,7 +6,7 @@
 
 SGWidget000221103* SGIllusionManagement::illusionpagebackground = nullptr;
 SGWidget000221103* SGIllusionManagement::illusionpagewhite = nullptr;
-int SGIllusionManagement::t = 1;
+int SGIllusionManagement::t = 20;
 QTimer* SGIllusionManagement::timer = nullptr;
 SGWidget000311104* SGIllusionManagement::timeindicator = nullptr;
 SGComplementaryColourRenderer* SGIllusionManagement::renderer = nullptr;
@@ -17,6 +17,7 @@ void SGIllusionManagement::initialiseillusionpage(){
         (*SGIllusionManagement::illusionpagebackground).show();
         (*SGIllusionManagement::timeindicator).show();
         (*SGIllusionManagement::renderer).show();
+        (*SGIllusionManagement::renderer).update();
         (*SGIllusionManagement::continuebutton).hide();
         QString white = "rgba(255, 255, 255, 255)";
         SGGeneralLibrary::SetUIStyle(SGIllusionManagement::illusionpagewhite, SGGeneralLibrary::stylesheetfieldbackgroundcolour, white);

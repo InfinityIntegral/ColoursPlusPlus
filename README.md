@@ -7,13 +7,10 @@ Colours++ is a application to visualise impossible colours made as part of a sch
 - Qt (C++ GUI framework)
 - OpenGL (through Qt, for rendering)
 
-## Getting started...
-The application is quite small, so it will not take too long to develop. Once completed, a .exe file for x64 Windows will be available for running the application on your computer. If you want it on another platform, you can build it from the source code here.
-
-### Prerequisites
+## Prerequisites
 Have a computer running Windows x64.
 
-### Installation
+## Installation
 Download the .exe from this repository onto your computer and run it directly.
 
 To build it yourself for another platform, pls copy paste all the code here into a Qt project and build it using the latest version of Qt.
@@ -27,9 +24,9 @@ You can view stygian, self-luminous, and hyperbolic impossible colours of your c
 	- [x] stygian colours
 	- [x] self-luminous colours
 	- [x] hyperbolic colours
-- [ ] scientific explanation
-- [ ] RGB coordinates estimation
-     - [ ] report on RGB coordinates estimation algorithm
+- [x] scientific explanation
+- [x] RGB coordinates estimation
+     - [x] report on RGB coordinates estimation algorithm
 
 ## Contributing...
 This is a graded school project, it is not accepting any contributions except those from me.

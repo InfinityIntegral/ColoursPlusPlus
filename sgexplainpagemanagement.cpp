@@ -4,6 +4,7 @@
 #include "sgintropagemanagement.h"
 #include <QDesktopServices>
 #include <QUrl>
+#include "sgestimatergbmanagement.h"
 
 SGWidget000221103* SGExplainPageManagement::explainpagebackground = nullptr;
 SGTextButton022211332* SGExplainPageManagement::restartbutton = nullptr;
@@ -17,6 +18,7 @@ QString SGExplainPageManagement::infotext = "    Did you see a circle with a col
 void SGExplainPageManagement::initialiseexplainpage(){
     if(SGExplainPageManagement::explainpagebackground != nullptr){
         (*SGExplainPageManagement::explainpagebackground).show();
+        (*SGExplainPageManagement::explaintext).setText(SGExplainPageManagement::infotext + SGEstimateRGBManagement::EstimateRGBs());
         emit (*SGCentralManagement::signalsemitter).updateexplainpage();
         return;
     }
@@ -31,7 +33,7 @@ void SGExplainPageManagement::initialiseexplainpage(){
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateexplainpage, SGExplainPageManagement::explainpagelayout, &SGLayoutExplainPage::ReceiveUpdateCall);
     (*SGExplainPageManagement::explainpagescrollview).setWidget(SGExplainPageManagement::explainpagelayout);
     (*SGExplainPageManagement::explainpagelayout).ReceiveUpdateCall();
-    SGExplainPageManagement::explaintext = new SGText011260021(SGExplainPageManagement::explainpagelayout, SGExplainPageManagement::infotext, 1.0f);
+    SGExplainPageManagement::explaintext = new SGText011260021(SGExplainPageManagement::explainpagelayout, SGExplainPageManagement::infotext + SGEstimateRGBManagement::EstimateRGBs(), 1.0f);
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateexplainpage, SGExplainPageManagement::explaintext, &SGText011260021::ResizeObj);
     SGExplainPageManagement::moreinfobutton = new SGTextButton022110032(SGExplainPageManagement::explainpagelayout, "more information", 5.5f, 1.0f);
     connect(SGCentralManagement::signalsemitter, &SGSignalsEmitter::updateexplainpage, SGExplainPageManagement::moreinfobutton, &SGTextButton022110032::ResizeObj);
@@ -44,5 +46,5 @@ void SGExplainPageManagement::restartapp(){
 }
 
 void SGExplainPageManagement::seemoreinfo(){
-    QDesktopServices::openUrl(QUrl("https://yandex.com"));
+    QDesktopServices::openUrl(QUrl("https://docs.google.com/document/d/1PqrCunHUSQxjo8oOZIk5-IW0hnq93MPRQLe4yAvj1iM/edit?usp=sharing"));
 }
