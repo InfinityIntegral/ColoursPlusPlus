@@ -17,7 +17,7 @@ QString SGEstimateRGBManagement::EstimateRGBs(){
         g1 = 255.0f;
         b1 = 255.0f;
     }
-    else if(SGSelectPageManagement::selectedtype == 3){
+    else{
         uint c = SGGeneralLibrary::maxsaturatedcolour(SGSelectPageManagement::selectedhue);
         r1 = 0xFF & (c >> 24);
         g1 = 0xFF & (c >> 16);
@@ -38,12 +38,12 @@ QString SGEstimateRGBManagement::EstimateRGBs(){
     r0 /= 255.0f;
     g0 /= 255.0f;
     b0 /= 255.0f;
-    r1 = std::pow(r1, 1.0f / 2.2f);
-    g1 = std::pow(g1, 1.0f / 2.2f);
-    b1 = std::pow(b1, 1.0f / 2.2f);
-    r0 = std::pow(r0, 1.0f / 2.2f);
-    g0 = std::pow(g0, 1.0f / 2.2f);
-    b0 = std::pow(b0, 1.0f / 2.2f);
+    r1 = std::pow(r1, 2.2f);
+    g1 = std::pow(g1, 2.2f);
+    b1 = std::pow(b1, 2.2f);
+    r0 = std::pow(r0, 2.2f);
+    g0 = std::pow(g0, 2.2f);
+    b0 = std::pow(b0, 2.2f);
     r1 = (175.0f + 400.0f * 3.426f * r1) / (175.0f + 400.0f * 3.426f);
     g1 = (175.0f + 400.0f * 3.426f * g1) / (175.0f + 400.0f * 3.426f);
     b1 = (175.0f + 400.0f * 3.426f * b1) / (175.0f + 400.0f * 3.426f);
@@ -80,11 +80,11 @@ QString SGEstimateRGBManagement::EstimateRGBs(){
     g1 = ((175.0f + 400.0f * 3.426f) * g1 - 175.0f) / (400.0f * 3.426f);
     b1 = ((175.0f + 400.0f * 3.426f) * b1 - 175.0f) / (400.0f * 3.426f);
     if(r1 < 0){r1 = (-1.0f) * std::pow((-1.0f) * r1, 2.2f);}
-    else{r1 = std::pow(r1, 2.2f);}
+    else{r1 = std::pow(r1, 1.0f / 2.2f);}
     if(g1 < 0){g1 = (-1.0f) * std::pow((-1.0f) * g1, 2.2f);}
-    else{g1 = std::pow(g1, 2.2f);}
+    else{g1 = std::pow(g1, 1.0f / 2.2f);}
     if(b1 < 0){b1 = (-1.0f) * std::pow((-1.0f) * b1, 2.2f);}
-    else{b1 = std::pow(b1, 2.2f);}
+    else{b1 = std::pow(b1, 1.0f / 2.2f);}
     r1 *= 255.0f;
     g1 *= 255.0f;
     b1 *= 255.0f;
