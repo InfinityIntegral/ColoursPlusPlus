@@ -1,0 +1,82 @@
+@SG_OTHERFILE_tutorials/full01 Full Tutorial Part 1
+See @SG_ML_L004009here../full00 for the previous part of the tutorial.
+In the previous part, we set up our GitHub repository and Qt Creator project.
+@SG_ML_BLANKLINE
+@SG_ML_HEADER_ setting up CMake
+We continue with setting up CMake.
+We can now write the default CMake settings. These define settings that CMake sets to a different value by default.
+@SG_STARTCODEBLK
+cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
+
+set(CMAKE_ERROR_DEPRECATED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_SHARED_LIBRARY_ENABLE_EXPORTS ON)
+set(CMAKE_AUTORCC ON)
+if(APPLE)
+    set(CMAKE_BUILD_RPATH "@loader_path")
+elseif(UNIX)
+    set(CMAKE_BUILD_RPATH "$ORIGIN")
+endif()
+set(CMAKE_BUILD_RPATH_USE_ORIGIN ON)
+set(CMAKE_INCLUDE_CURRENT_DIR OFF)
+set(CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE OFF)
+set(CMAKE_OPTIMIZE_DEPENDENCIES ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set_property(DIRECTORY . PROPERTY GLOBAL_DEPENDS_NO_CYCLES ON)
+set_property(DIRECTORY . PROPERTY REPORT_UNDEFINED_PROPERTIES ON)
+set_property(DIRECTORY . PROPERTY TARGET_SUPPORTS_SHARED_LIBS ON)
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message("building in DEBUG mode, this should NOT be released")
+endif()
+@SG_ENDCODEBLK
+Essentially, these settings enable use of DLLs, configure the compiler to use C++ 20, prints warnings for likely issues, and enforce good coding practises by only exporting stuff explicitly marked.
+@SG_ML_BLANKLINE
+We can then declare a CMake project.
+@SG_STARTCODEBLK
+project(ColoursPlusPlus
+    VERSION 2.0.0
+    LANGUAGES CXX
+)
+@SG_ENDCODEBLK
+Here we specify the name of the project (ColoursPlusPlus), its version (2.0.0), and that it uses the C++ language.
+Note that C++ in CMake is CXX, not CPP or C.
+This app actually does not have anything to do with impossible colours from my Science project but it will use the same name anyways. The original Colours++ app is chosen for this tutorial because it is really easy to build and showcases all SGEXTN modules.
+@SG_ML_BLANKLINE
+We can now proceed with actually setting up the app in CMake.
+@SG_STARTCODEBLK
+add_executable(ColoursPlusPlus_app WIN32)
+target_include_directories(ColoursPlusPlus_app
+    PRIVATE "include"
+)
+target_sources(ColoursPlusPlus_app
+    PRIVATE "src/main.cpp"
+)
+@SG_ENDCODEBLK
+This creates a new build target (thing to build) for CMake called ColoursPlusPlus_app.
+target_include_directories tells CMake that all our headers will be inside the include/ folder.
+target_sources lists all our source files which should all be in src/, right now we only have main.cpp, but when we add more files later, the new source files should also be listed here.
+Do NOT use the Qt Creator automatically add to project when creating file feature, it technically works but will make your CMake file look ugly.
+You can now create the include/ and src/ folders, and make a empty file main.cpp inside src/. When using the Qt Creator GUI to make files, ALWAYS choose None when asked for what project to put the file in and later add it under target_sources yourself only if it is really a C++ file.
+@SG_ML_BLANKLINE
+We then link our application to the SGEXTN library. To do this, we find all the modules and link them.
+@SG_STARTCODEBLK
+find_package(SGEXTN REQUIRED COMPONENTS SG_Containers SG_Math SG_Core SG_FileSystem SG_Widgets SG_RI EntryPoint_SG)
+target_link_libraries(ColoursPlusPlus_app
+    PRIVATE SGEXTN::SG_Containers
+    PRIVATE SGEXTN::SG_Math
+    PRIVATE SGEXTN::SG_Core
+    PRIVATE SGEXTN::SG_FileSystem
+    PRIVATE SGEXTN::SG_Widgets
+    PRIVATE SGEXTN::SG_RI
+    PRIVATE SGEXTN::EntryPoint_SG
+)
+@SG_ENDCODEBLK
+For this application we likely need all the SGEXTN modules, so we find and link all of them. This assumes that you have SGEXTN installed properly already. If not, go back to the README to see how to install it.
+@SG_ML_BLANKLINE
+See @SG_ML_L004009here../full02 for the next part of the tutorial.

@@ -1,0 +1,11 @@
+@SG_OTHERFILE_tutorials/full03 Full Tutorial Part 3
+See @SG_ML_L004009here../full02 for the previous part of the tutorial.
+In the previous part, we wrote main.cpp and made the app show a window
+@SG_ML_BLANKLINE
+@SG_ML_HEADER_ setting up basic GUI
+GUI? a what now?
+GUI means graphical user interface, which literally means "something that the user can see (graphical) and use to interact (interface) with the application". In other words, the app shows a window instead of running inside cmd or in the background.
+@SG_ML_BLANKLINE
+We first plan what our UI should look like. This page should explain to the user what the application is about and provide a button to go to the next page.
+Having an almost full screen, scrollable, textbox explaining what the app is about seems like a good idea. Then we can have a full width button on the bottom which goes to the next page.
+But wait... we are now using the @SG_FINDREP_WIDGET system, and also its subsystems @SG_FINDREP_WDIST and @SG_FINDREP_THEME. You must read through their tutorials first.
