@@ -22,6 +22,11 @@ git clone https://github.com/InfinityIntegral/ColoursPlusPlus.git
 @SG_ENDCODEBLK
 This links the GitHub remote repository with the new folder that you just created. If this is successful, you should see a hidden folder called .git in the new folder.
 If Git complains something about not being able to start a thread, restart (turn off then turn on) your Windows firewall and try again. If you do not have Git, install Git first.
+If you are on Linux, replace the link with
+@SG_STARTCODEBLK
+git@github.com:[your GitHub username]/[repository name].git
+@SG_ENDCODEBLK
+to use SSH instead of HTTPS. This requires you to set up SSH access on your account first and is easier than trying to get Git Credential Manager to work on Linux.
 @SG_ML_BLANKLINE
 We create a blank text file CMakeLists.txt in the new folder then open up Qt Creator.
 On the top right corner of the Qt Creator welcome page, click "open project" and navigate to the new folder that you just created. Select the empty CMakeLists.txt file.

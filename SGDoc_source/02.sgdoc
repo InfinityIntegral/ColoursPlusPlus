@@ -28,6 +28,7 @@ int main(int argc, char** argv){
 @SG_ENDCODEBLK
 We just set the basic information of our app using SGXCentral static variables in our entry point for now. We can then click the "run" button.
 If you see a window appearing, it means we did everything correctly. Excellent.
+If you are on Linux, make sure that you set LD_LIBRARY_PATH correctly so that the app can find the DLLs without you having to copy paste the DLLs into the build folder for every single build.
 Fun fact: did you know that the status bar timer in every SGEXTN app displays the amount of time since the independence of Singapore in years?
 @SG_ML_BLANKLINE
 See @SG_ML_L004009here../full03 for the next part of the tutorial.

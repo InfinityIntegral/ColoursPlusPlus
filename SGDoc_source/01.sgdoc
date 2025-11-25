@@ -79,4 +79,9 @@ target_link_libraries(ColoursPlusPlus_app
 @SG_ENDCODEBLK
 For this application we likely need all the SGEXTN modules, so we find and link all of them. This assumes that you have SGEXTN installed properly already. If not, go back to the README to see how to install it.
 @SG_ML_BLANKLINE
+If you are on Linux, the linker has stricter restrictions regarding the use of DLLs. You must run the command below to prove that you have the Qt DLLs present, even if you are not linking them.
+@SG_STARTCODEBLK
+find_package(SGEXTN REQUIRED COMPONENTS SG_Containers SG_Core SG_FileSystem SG_Widgets EntryPoint_SG)
+@SG_ENDCODEBLK
+@SG_ML_BLANKLINE
 See @SG_ML_L004009here../full02 for the next part of the tutorial.
