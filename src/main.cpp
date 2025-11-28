@@ -2,7 +2,7 @@
 #include <SGXCentral.h>
 #include <SGCLPIntroductionPage.h>
 
-void init(){
+void init(){ //NOLINT(misc-use-internal-linkage)
     SGXCentral::applicationName = "Colours++ - a SGEXTN demo app";
     SGXCentral::applicationVersion = "v2.0.0";
     SGXCentral::organisationName = "05524F.sg (Singapore)";

@@ -48,6 +48,6 @@ target_sources(ColoursPlusPlus_app
 As we write more classes in future, remember to add the source files into here. The header files should not be added.
 We can now test again.
 @SG_ML_BLANKLINE
-The introduction page now shows as expected. Excellent.
+The introduction page now shows as expected. Excellent. Remember to commit this to Git.
 @SG_ML_BLANKLINE
 See @SG_ML_L004009here../full05 for the next part of the tutorial.

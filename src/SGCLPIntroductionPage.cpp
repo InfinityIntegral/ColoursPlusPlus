@@ -6,6 +6,7 @@
 #include <SGWPageBackground.h>
 #include <SGWLongLabel.h>
 #include <SGWTextButton.h>
+#include <SGCLPOptionsPage.h>
 
 SGWBackground* SGCLPIntroductionPage::instance = nullptr;
 
@@ -15,10 +16,15 @@ SGWBackground* SGCLPIntroductionPage::initialise(){
     message += SGXChar(0x0378);
     SGWPageBackground* bg = new SGWPageBackground(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 8);
     new SGWLongLabel(bg, message, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 0.0f, 1.0f, 0.0f, 0.5f, 0.0f, 0.5f);
-    new SGWTextButton(bg, "continue", nullptr, 0.0f, 0.0f, 1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f);
+    new SGWTextButton(bg, "continue", &SGCLPIntroductionPage::terminate, 0.0f, 0.0f, 1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f);
     return bg;
 }
 
 void SGCLPIntroductionPage::activate(){
     SGWBackground::enable(SGCLPIntroductionPage::instance, &SGCLPIntroductionPage::initialise, nullptr);
+}
+
+void SGCLPIntroductionPage::terminate(){
+    SGWBackground::disable(SGCLPIntroductionPage::instance);
+    SGCLPOptionsPage::activate();
 }

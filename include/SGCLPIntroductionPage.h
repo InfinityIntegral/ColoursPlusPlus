@@ -7,6 +7,7 @@ public:
     static SGWBackground* instance;
     static SGWBackground* initialise();
     static void activate();
+    static void terminate();
 };
 
 #endif // SGCLPINTRODUCTIONPAGE_H

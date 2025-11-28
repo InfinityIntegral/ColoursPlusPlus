@@ -31,4 +31,13 @@ If you see a window appearing, it means we did everything correctly. Excellent.
 If you are on Linux, make sure that you set LD_LIBRARY_PATH correctly so that the app can find the DLLs without you having to copy paste the DLLs into the build folder for every single build.
 Fun fact: did you know that the status bar timer in every SGEXTN app displays the amount of time since the independence of Singapore in years?
 @SG_ML_BLANKLINE
+Having a working SGEXTN powered window is a great achievement, so we should commit it onto Git. We use these commands below.
+@SG_STARTCODEBLK
+git add .
+git commit -m "initialise repository"
+git push
+@SG_ENDCODEBLK
+The add command adds all your changes to the stage, which is the group of changes to be committed. The commit command actually commits the changes, and the -m allows you to write a commit message describing what this commit is about. The push command syncs the remote repository (GitHub) with the copy on your computer.
+In future parts of the tutorial, we will not be going through how to commit to Git again, instead the instructions would be something like "commit this to Git".
+@SG_ML_BLANKLINE
 See @SG_ML_L004009here../full03 for the next part of the tutorial.
