@@ -31,6 +31,7 @@ project(ColoursPlusPlus
     VERSION 2.0.0
     LANGUAGES CXX
 )
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 GuiPrivate ShaderTools)
 
 add_executable(ColoursPlusPlus_app WIN32)
 target_include_directories(ColoursPlusPlus_app
@@ -42,10 +43,18 @@ target_sources(ColoursPlusPlus_app
     PRIVATE "src/SGCLPOptionsPage.cpp"
     PRIVATE "src/SGCLPDisplayPage.cpp"
     PRIVATE "src/SGCLPPresetsSelectionPage.cpp"
+    PRIVATE "src/SGCLPCircleDisplay.cpp"
 )
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 GuiPrivate)
+qt6_add_resources(ColoursPlusPlus_app ColoursPlusPlus_app_assets PREFIX "ColoursPlusPlus" BASE "assets" FILES
+    "assets/conjugates.png"
+)
+qt6_add_shaders(ColoursPlusPlus_app ColoursPlusPlus_app_shaders PREFIX "ColoursPlusPlus" BASE "assets" FILES
+    "assets/circle.vert"
+    "assets/circle.frag"
+)
 find_package(SGEXTN REQUIRED COMPONENTS SG_Containers SG_Math SG_Core SG_FileSystem SG_Widgets SG_RI EntryPoint_SG)
 target_link_libraries(ColoursPlusPlus_app
+    PRIVATE Qt6::Core # for QRC
     PRIVATE SGEXTN::SG_Containers
     PRIVATE SGEXTN::SG_Math
     PRIVATE SGEXTN::SG_Core

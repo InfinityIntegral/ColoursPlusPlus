@@ -5,6 +5,8 @@
 #include <SGXTimer.h>
 #include <SGWBlankWidget.h>
 #include <SGCLPOptionsPage.h>
+#include <SGRRendererWidget.h>
+#include <SGCLPCircleDisplay.h>
 
 SGWBackground* SGCLPDisplayPage::instance = nullptr;
 int SGCLPDisplayPage::time = 0;
@@ -16,6 +18,7 @@ SGWBackground* SGCLPDisplayPage::initialise(){
     SGCLPDisplayPage::time = 0;
     SGCLPDisplayPage::progressBar = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 6);
     SGCLPDisplayPage::timer = new SGXTimer(1.0f, &SGCLPDisplayPage::updateProgressBar);
+    if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Circle){new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPCircleDisplay(SGCLPOptionsPage::chosenBackgroundColour), nullptr);}
     return bg;
 }
 
