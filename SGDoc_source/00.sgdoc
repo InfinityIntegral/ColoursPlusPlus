@@ -9,7 +9,6 @@ The app that we are trying to build in this tutorial is essentially a rebuild of
 - choose shape (to show use of shaders from @SG_FINDREP_RENDERER)
 - countdown timer (to show use of SGXTimer)
 - save and load presets (to show use of SGXFileSystem and SGXFile)
-- settings page (to show use of SGEXTN builtin customisation pages)
 @SG_ML_BLANKLINE
 Next, we go to GitHub and use the GitHub UI to make a new repository, this is significantly easier than setting 1 up locally. Make sure that you do NOT add a README or a license or a .gitignore, since we will add these ourselves later.
 In your computer file system, make a empty folder preferably named after the project, and use cmd (or terminal) to run

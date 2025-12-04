@@ -12,6 +12,11 @@
 #include <SGWNotify.h>
 #include <SGXColourHSLA.h>
 #include <SGCLPDisplayPage.h>
+#include <SGXTimeStamp.h>
+#include <SGXString.h>
+#include <SGXFileSystem.h>
+#include <SGXFile.h>
+#include <SGCLPPresetsSelectionPage.h>
 
 SGWBackground* SGCLPOptionsPage::instance = nullptr;
 SGWColourPickerWidget* SGCLPOptionsPage::foregroundColourPicker = nullptr;
@@ -40,7 +45,7 @@ void SGCLPOptionsPage::activate(){
 SGWBackground* SGCLPOptionsPage::initialise(){
     SGWBackground* bg = new SGWScrollView(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 20.0f, 0.0f, 0.5f, 8);
     new SGWTextLabel(bg, "Preferences", 0.0f, 0.5f, 0.0f, 0.5f, 1.0f, -1.0f, 0.0f, 1.5f, SGWHorizontalAlignment::Center, false);
-    new SGWTextButton(bg, "use preset", nullptr, 0.0f, 0.5f, 0.0f, 2.5f, 1.0f, -1.0f, 0.0f, 1.0f);
+    new SGWTextButton(bg, "use preset", &SGCLPPresetsSelectionPage::activate, 0.0f, 0.5f, 0.0f, 2.5f, 1.0f, -1.0f, 0.0f, 1.0f);
     new SGWTextLabel(bg, "foreground colour:", 0.0f, 0.5f, 0.0f, 4.5f, 0.5f, -0.6f, 0.0f, 1.0f, SGWHorizontalAlignment::Right, false);
     SGCLPOptionsPage::foregroundColourPicker = new SGWColourPickerWidget(bg, 0.5f, 0.1f, 0.0f, 4.5f, 0.5f, -0.6f, 0.0f, 1.0f, SGXColourRGBA(255, 0, 200));
     new SGWTextLabel(bg, "background colour (choose from below)", 0.0f, 0.5f, 0.0f, 6.0f, 1.0f, -1.0f, 0.0f, 1.0f, SGWHorizontalAlignment::Center, false);
@@ -70,7 +75,7 @@ SGWBackground* SGCLPOptionsPage::initialise(){
     new SGWTextLabel(bg, "(not applicable)", 0.5f, 0.1f, 0.0f, 14.5f, 0.5f, -0.6f, 0.0f, 1.0f, SGWHorizontalAlignment::Left, false);
     SGCLPOptionsPage::polygonSideCountInput = new SGWTextInput(bg, &SGCLPOptionsPage::polygonSideCountCheck, 0.5f, 0.1f, 0.0f, 14.5f, 0.5f, -0.6f, 0.0f, 1.0f);
     SGCLPOptionsPage::polygonSideCountWarning = new SGWTextLabel(bg, "integer 3 or above", 0.5f, 0.1f, 0.0f, 15.5f, 0.5f, -0.6f, 0.0f, 0.75f, SGWHorizontalAlignment::Left, true);
-    new SGWTextButton(bg, "save current settings as preset", nullptr, 0.0f, 0.5f, 0.0f, 17.0f, 1.0f, -1.0f, 0.0f, 1.0f);
+    new SGWTextButton(bg, "save current settings as preset", &SGCLPOptionsPage::savePresets, 0.0f, 0.5f, 0.0f, 17.0f, 1.0f, -1.0f, 0.0f, 1.0f);
     new SGWTextButton(bg, "save preferences and continue", &SGCLPOptionsPage::submitOptions, 0.0f, 0.5f, 0.0f, 18.5f, 1.0f, -1.0f, 0.0f, 1.0f);
     return bg;
 }
@@ -138,10 +143,10 @@ void SGCLPOptionsPage::polygonSideCountCheck(){
     }
 }
 
-void SGCLPOptionsPage::submitOptions(){
+bool SGCLPOptionsPage::checkOptions(){
     if((*SGCLPOptionsPage::polygonSideCountInput).getInvalid() == true && ((*SGCLPOptionsPage::patternPolygonButton).getSelected() == true || (*SGCLPOptionsPage::patternStarButton).getSelected() == true)){
         SGWNotify::pullDownNotify("invalid number of vertices chosen");
-        return;
+        return false;
     }
     SGCLPOptionsPage::chosenForegroundColour = (*SGCLPOptionsPage::foregroundColourPicker).getColour();
     SGCLPOptionsPage::chosenBackgroundColour = SGCLPOptionsPage::chosenForegroundColour;
@@ -158,6 +163,27 @@ void SGCLPOptionsPage::submitOptions(){
     else if((*SGCLPOptionsPage::patternStarButton).getSelected() == true){SGCLPOptionsPage::chosenPattern = SGCLPOptionsPage::Star;}
     else{SGCLPOptionsPage::chosenPattern = SGCLPOptionsPage::Fractal;}
     SGCLPOptionsPage::chosenVertexCount = (*SGCLPOptionsPage::polygonSideCountInput).getTextAsInt(nullptr, 3, SGLIntLimits::maximum());
+    return true;
+}
+
+void SGCLPOptionsPage::submitOptions(){
+    if(SGCLPOptionsPage::checkOptions() == false){return;}
     SGWBackground::disable(SGCLPOptionsPage::instance);
     SGCLPDisplayPage::activate();
+}
+
+void SGCLPOptionsPage::savePresets(){
+    if(SGCLPOptionsPage::checkOptions() == false){return;}
+    const SGXString fileName = SGXFileSystem::joinFilePaths(SGXFileSystem::userDataFilePath, SGXTimeStamp::now().getFileNameCorrectToSecondSeparated('_') + ".sg");
+    if(SGXFileSystem::fileExists(fileName)){return;}
+    SGXFileSystem::createFile(fileName);
+    const SGXFile file(fileName);
+    file.writeColourRGBA(SGCLPOptionsPage::chosenForegroundColour);
+    file.writeColourRGBA(SGCLPOptionsPage::chosenBackgroundColour);
+    if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Circle){file.writeInt(1);}
+    else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Polygon){file.writeInt(2);}
+    else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Star){file.writeInt(3);}
+    else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Fractal){file.writeInt(4);}
+    else{file.writeInt(0);}
+    file.writeInt(SGCLPOptionsPage::chosenVertexCount);
 }

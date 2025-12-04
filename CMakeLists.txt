@@ -41,6 +41,7 @@ target_sources(ColoursPlusPlus_app
     PRIVATE "src/SGCLPIntroductionPage.cpp"
     PRIVATE "src/SGCLPOptionsPage.cpp"
     PRIVATE "src/SGCLPDisplayPage.cpp"
+    PRIVATE "src/SGCLPPresetsSelectionPage.cpp"
 )
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 GuiPrivate)
 find_package(SGEXTN REQUIRED COMPONENTS SG_Containers SG_Math SG_Core SG_FileSystem SG_Widgets SG_RI EntryPoint_SG)

@@ -32,6 +32,7 @@ public:
     static void patternSelect(SGWButton* x);
     static SGWWidget* polygonSideCountWarning;
     static void polygonSideCountCheck();
+    static bool checkOptions();
     static void submitOptions();
     static SGXColourRGBA chosenBackgroundColour;
     static SGXColourRGBA chosenForegroundColour;
@@ -43,6 +44,7 @@ public:
     };
     static Pattern chosenPattern;
     static int chosenVertexCount;
+    static void savePresets();
 };
 
 #endif // SGCLPOPTIONSPAGE_H
