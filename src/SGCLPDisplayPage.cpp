@@ -9,6 +9,7 @@
 #include <SGCLPCircleDisplay.h>
 #include <SGCLPPolygonDisplay.h>
 #include <SGCLPStarDisplay.h>
+#include <SGCLPFractalDisplay.h>
 
 SGWBackground* SGCLPDisplayPage::instance = nullptr;
 int SGCLPDisplayPage::time = 0;
@@ -31,6 +32,7 @@ SGWBackground* SGCLPDisplayPage::initialise(){
         (*w).setColour(SGCLPOptionsPage::chosenBackgroundColour);
         new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPStarDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);
     }
+    else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Fractal){new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPFractalDisplay(SGCLPOptionsPage::chosenBackgroundColour, SGCLPOptionsPage::chosenForegroundColour), nullptr);}
     return bg;
 }
 
