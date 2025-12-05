@@ -44,6 +44,7 @@ target_sources(ColoursPlusPlus_app
     PRIVATE "src/SGCLPDisplayPage.cpp"
     PRIVATE "src/SGCLPPresetsSelectionPage.cpp"
     PRIVATE "src/SGCLPCircleDisplay.cpp"
+    PRIVATE "src/SGCLPPolygonDisplay.cpp"
 )
 qt6_add_resources(ColoursPlusPlus_app ColoursPlusPlus_app_assets PREFIX "ColoursPlusPlus" BASE "assets" FILES
     "assets/conjugates.png"
@@ -51,6 +52,8 @@ qt6_add_resources(ColoursPlusPlus_app ColoursPlusPlus_app_assets PREFIX "Colours
 qt6_add_shaders(ColoursPlusPlus_app ColoursPlusPlus_app_shaders PREFIX "ColoursPlusPlus" BASE "assets" FILES
     "assets/circle.vert"
     "assets/circle.frag"
+    "assets/polygon.vert"
+    "assets/polygon.frag"
 )
 find_package(SGEXTN REQUIRED COMPONENTS SG_Containers SG_Math SG_Core SG_FileSystem SG_Widgets SG_RI EntryPoint_SG)
 target_link_libraries(ColoursPlusPlus_app
