@@ -45,6 +45,7 @@ target_sources(ColoursPlusPlus_app
     PRIVATE "src/SGCLPPresetsSelectionPage.cpp"
     PRIVATE "src/SGCLPCircleDisplay.cpp"
     PRIVATE "src/SGCLPPolygonDisplay.cpp"
+    PRIVATE "src/SGCLPStarDisplay.cpp"
 )
 qt6_add_resources(ColoursPlusPlus_app ColoursPlusPlus_app_assets PREFIX "ColoursPlusPlus" BASE "assets" FILES
     "assets/conjugates.png"

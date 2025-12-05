@@ -167,11 +167,16 @@ et.at(3 * vertexCount - 1) = 1;
 @SG_ENDCODEBLK
 From the code in the second part of the implementation, we can see that the triangulation being used slices the polygon into identical triangles around the center. This is not perfect, but better than slicing it into triangles around a vertex. When a good triangulation is absolutely necessary (when you use textures), you can consider using the Delaunay Triangulation or Constrained Delaunay Triangulation.
 @SG_ML_BLANKLINE
-Now we can add this line to SGCLPDisplayPage::initialise
+Now we can add these lines to SGCLPDisplayPage::initialise
 @SG_STARTCODEBLK
-else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Polygon){new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPPolygonDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);}
+else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Polygon){
+    SGWBlankWidget* w = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, -1);
+    (*w).setColour(SGCLPOptionsPage::chosenBackgroundColour);
+    new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPPolygonDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);
+}
 @SG_ENDCODEBLK
-and add the necessary changes to our CMakeLists.txt file.
+Apart from creating a SGRRendererWidget to display the renderer, this also creates a SGWBlankWidget and uses SGWBlankWidget::setColour to set its colour from a SGXColourRGBA. All colours on @SG_FINDREP_WIDGET UI elements can be fully customised using the theme system and by directly inputting the colour.
+Do not forget to add the necessary changes to our CMakeLists.txt file.
 Testing shows that the SGRRendererWidget is working as expected, so we can run a clang-tidy check and commit to GitHub.
 @SG_ML_BLANKLINE
 See @SG_ML_L004009here../full18 for the next part of the tutorial.

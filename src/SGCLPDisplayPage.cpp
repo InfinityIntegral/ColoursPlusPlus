@@ -8,6 +8,7 @@
 #include <SGRRendererWidget.h>
 #include <SGCLPCircleDisplay.h>
 #include <SGCLPPolygonDisplay.h>
+#include <SGCLPStarDisplay.h>
 
 SGWBackground* SGCLPDisplayPage::instance = nullptr;
 int SGCLPDisplayPage::time = 0;
@@ -20,7 +21,16 @@ SGWBackground* SGCLPDisplayPage::initialise(){
     SGCLPDisplayPage::progressBar = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 6);
     SGCLPDisplayPage::timer = new SGXTimer(1.0f, &SGCLPDisplayPage::updateProgressBar);
     if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Circle){new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPCircleDisplay(SGCLPOptionsPage::chosenBackgroundColour), nullptr);}
-    else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Polygon){new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPPolygonDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);}
+    else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Polygon){
+        SGWBlankWidget* w = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, -1);
+        (*w).setColour(SGCLPOptionsPage::chosenBackgroundColour);
+        new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPPolygonDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);
+    }
+    else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Star){
+        SGWBlankWidget* w = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, -1);
+        (*w).setColour(SGCLPOptionsPage::chosenBackgroundColour);
+        new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPStarDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);
+    }
     return bg;
 }
 
