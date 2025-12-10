@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
 env:
-  APPNAME: sg-extn
-  VERSION: 6.1.0
+  APPNAME: colours-plus-plus
+  VERSION: 2.0.0
   QTVERSION: 6.10.1
-  CMAKETARGET: InternalTest
+  CMAKETARGET: ColoursPlusPlus_app
 
 jobs:
   linux-gcc-build:
