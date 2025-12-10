@@ -31,7 +31,23 @@ project(ColoursPlusPlus
     VERSION 2.0.0
     LANGUAGES CXX
 )
+
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 GuiPrivate ShaderTools)
+if(APPLE)
+    find_package(Qt6 REQUIRED COMPONENTS OpenGL Network)
+    foreach(_tgt Qt6::Core Qt6::Gui Qt6::Qml Qt6::Quick Qt6::QuickControls2 Qt6::GuiPrivate Qt6::ShaderTools Qt6::OpenGL Qt6::Network)
+        if(TARGET ${_tgt})
+            get_target_property(_loc ${_tgt} IMPORTED_LOCATION_RELEASE)
+            get_target_property(_loc_dbg ${_tgt} IMPORTED_LOCATION_DEBUG)
+            if(_loc)
+                set_target_properties(${_tgt} PROPERTIES IMPORTED_IMPLIB_RELEASE "${_loc}")
+            endif()
+            if(_loc_dbg)
+                set_target_properties(${_tgt} PROPERTIES IMPORTED_IMPLIB_DEBUG "${_loc_dbg}")
+            endif()
+        endif()
+    endforeach()
+endif()
 
 add_executable(ColoursPlusPlus_app WIN32)
 target_include_directories(ColoursPlusPlus_app
