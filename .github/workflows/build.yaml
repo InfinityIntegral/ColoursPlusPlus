@@ -1,0 +1,66 @@
+name: build app
+
+on:
+  workflow_dispatch:
+
+env:
+  APPNAME: sg-extn
+  VERSION: 6.1.0
+  QTVERSION: 6.10.1
+  CMAKETARGET: InternalTest
+
+jobs:
+  linux-gcc-build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Linux GCC build
+        uses: InfinityIntegral/SGEXTN/actions/linux_gcc_build@main
+        with:
+          app-name: ${{env.APPNAME}}
+          app-version: ${{env.VERSION}}
+          qt-version: ${{env.QTVERSION}}
+          cmake-target-name: ${{env.CMAKETARGET}}
+
+  macos-clang-build:
+    runs-on: macos-latest
+    steps:
+      - name: MacOS Clang build
+        uses: InfinityIntegral/SGEXTN/actions/macos_clang_build@main
+        with:
+          app-name: ${{env.APPNAME}}
+          app-version: ${{env.VERSION}}
+          qt-version: ${{env.QTVERSION}}
+          cmake-target-name: ${{env.CMAKETARGET}}
+
+  windows-llvm-mingw-build:
+    runs-on: windows-latest
+    steps:
+      - name: Windows LLVM MinGW build
+        uses: InfinityIntegral/SGEXTN/actions/windows_llvm_mingw_build@main
+        with:
+          app-name: ${{env.APPNAME}}
+          app-version: ${{env.VERSION}}
+          qt-version: ${{env.QTVERSION}}
+          cmake-target-name: ${{env.CMAKETARGET}}
+
+  windows-mingw-build:
+    runs-on: windows-latest
+    steps:
+      - name: Windows MinGW build
+        uses: InfinityIntegral/SGEXTN/actions/windows_mingw_build@main
+        with:
+          app-name: ${{env.APPNAME}}
+          app-version: ${{env.VERSION}}
+          qt-version: ${{env.QTVERSION}}
+          cmake-target-name: ${{env.CMAKETARGET}}
+
+  windows-msvc-build:
+    runs-on: windows-latest
+    steps:
+      - name: Windows MSVC build
+        uses: InfinityIntegral/SGEXTN/actions/windows_msvc_build@main
+        with:
+          app-name: ${{env.APPNAME}}
+          app-version: ${{env.VERSION}}
+          qt-version: ${{env.QTVERSION}}
+          cmake-target-name: ${{env.CMAKETARGET}}
