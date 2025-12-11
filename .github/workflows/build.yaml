@@ -22,7 +22,7 @@ jobs:
           cmake-target-name: ${{env.CMAKETARGET}}
 
   linux-arm-gcc-build:
-    runs-on: ubuntu-22.04-arm
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: Linux ARM GCC build
         uses: InfinityIntegral/SGEXTN/actions/linux_arm_gcc_build@main
