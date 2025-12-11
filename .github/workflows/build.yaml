@@ -1,4 +1,4 @@
-name: build app
+ name: build app
 
 on:
   workflow_dispatch:
@@ -10,55 +10,22 @@ env:
   CMAKETARGET: ColoursPlusPlus_app
 
 jobs:
-  linux-gcc-build:
-    runs-on: ubuntu-22.04
+  windows-arm-msvc-build:
+    runs-on: windows-11-arm
     steps:
-      - name: Linux GCC build
-        uses: InfinityIntegral/SGEXTN/actions/linux_gcc_build@main
+      - name: Windows ARM MSVC build
+        uses: InfinityIntegral/SGEXTN/actions/windows_arm_msvc_build@main
         with:
           app-name: ${{env.APPNAME}}
           app-version: ${{env.VERSION}}
           qt-version: ${{env.QTVERSION}}
           cmake-target-name: ${{env.CMAKETARGET}}
 
-  macos-clang-build:
-    runs-on: macos-latest
+  linux-arm-gcc-build:
+    runs-on: ubuntu-22.04-arm
     steps:
-      - name: MacOS Clang build
-        uses: InfinityIntegral/SGEXTN/actions/macos_clang_build@main
-        with:
-          app-name: ${{env.APPNAME}}
-          app-version: ${{env.VERSION}}
-          qt-version: ${{env.QTVERSION}}
-          cmake-target-name: ${{env.CMAKETARGET}}
-
-  windows-llvm-mingw-build:
-    runs-on: windows-latest
-    steps:
-      - name: Windows LLVM MinGW build
-        uses: InfinityIntegral/SGEXTN/actions/windows_llvm_mingw_build@main
-        with:
-          app-name: ${{env.APPNAME}}
-          app-version: ${{env.VERSION}}
-          qt-version: ${{env.QTVERSION}}
-          cmake-target-name: ${{env.CMAKETARGET}}
-
-  windows-mingw-build:
-    runs-on: windows-latest
-    steps:
-      - name: Windows MinGW build
-        uses: InfinityIntegral/SGEXTN/actions/windows_mingw_build@main
-        with:
-          app-name: ${{env.APPNAME}}
-          app-version: ${{env.VERSION}}
-          qt-version: ${{env.QTVERSION}}
-          cmake-target-name: ${{env.CMAKETARGET}}
-
-  windows-msvc-build:
-    runs-on: windows-latest
-    steps:
-      - name: Windows MSVC build
-        uses: InfinityIntegral/SGEXTN/actions/windows_msvc_build@main
+      - name: Linux ARM GCC build
+        uses: InfinityIntegral/SGEXTN/actions/linux_arm_gcc_build@main
         with:
           app-name: ${{env.APPNAME}}
           app-version: ${{env.VERSION}}
