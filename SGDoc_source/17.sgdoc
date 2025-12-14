@@ -8,7 +8,7 @@ Unlike the circle display which used the fragment shader to determine the circle
 We will use the same coordinate system for the vertices as what we used in the fragment shader of the circle display. The polygon will have its vertices all on the circle centered at the origin with a radius of 0.75
 Since the geometry will not cover the background, the background colour will be drawn using a SGWBlankWidget with a custom background colour.
 @SG_ML_BLANKLINE
-Firstly we write the vertex shader in a file named assets/polygon.vert
+Firstly we write the vertex shader in a file named polygon.vert
 @SG_STARTCODEBLK
 #version 310 es
 precision highp float;
