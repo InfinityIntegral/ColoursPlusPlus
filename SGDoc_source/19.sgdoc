@@ -24,6 +24,7 @@ And here is the fragment shader where the computation is done.
 @SG_STARTCODEBLK
 #version 310 es
 precision highp float;
+precision highp int;
 layout(std140, binding = 1) uniform data_{
     vec4 foregroundColour;
     vec4 backgroundColour;

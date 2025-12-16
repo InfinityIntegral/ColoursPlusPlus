@@ -12,6 +12,7 @@ Firstly we write the vertex shader in a file named polygon.vert
 @SG_STARTCODEBLK
 #version 310 es
 precision highp float;
+precision highp int;
 layout(std140, binding = 0) uniform SG_RI_builtin_{
     float x;
     float y;
@@ -46,6 +47,7 @@ This is even simpler, as it literally just displays whatever colour that the uni
 @SG_STARTCODEBLK
 #version 310 es
 precision highp float;
+precision highp int;
 layout(std140, binding = 1) uniform data_{
     vec4 foregroundColour;
 } data;

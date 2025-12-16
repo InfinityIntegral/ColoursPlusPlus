@@ -1,5 +1,6 @@
 #version 310 es
 precision highp float;
+precision highp int;
 layout(std140, binding = 1) uniform data_{
     vec4 foregroundColour;
 } data;

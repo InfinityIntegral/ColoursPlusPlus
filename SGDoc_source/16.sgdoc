@@ -16,6 +16,7 @@ First we write the vertex shader.
 @SG_STARTCODEBLK
 #version 310 es
 precision highp float;
+precision highp int;
 layout(std140, binding = 0) uniform SG_RI_builtin_{
     float x;
     float y;
@@ -51,6 +52,7 @@ The fragment shader is also really simple.
 @SG_STARTCODEBLK
 #version 310 es
 precision highp float;
+precision highp int;
 layout(std140, binding = 1) uniform data_{
     vec4 backgroundColour;
 } data;
