@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
-find_package(SGEXTN)
+find_package(SGEXTN REQUIRED)
 BuildLah_use_default_settings()
 project(ColoursPlusPlus VERSION 2.0.0 LANGUAGES CXX)
 BuildLah_find_dependencies()
