@@ -11,4 +11,4 @@ jobs:
       app-version: 2.0.0
       qt-version: 6.10.1
       cmake-target-name: ColoursPlusPlus_app
-      platforms: ios-clang
+      platforms: linux-gcc linux-arm-gcc windows-llvm-mingw windows-mingw windows-msvc windows-arm-msvc macos-clang android-arm64-clang android-arm32-clang android-amd64-clang android-amd32-clang android-aab-clang
