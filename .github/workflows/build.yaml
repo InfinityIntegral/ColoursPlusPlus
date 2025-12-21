@@ -20,4 +20,4 @@ jobs:
       licensing: GPLv3
       license-file: LICENSE.txt
       app-description: demo app from SGEXTN tutorial
-      platforms: windows-llvm-mingw
+      platforms: windows-llvm-mingw windows-mingw windows-msvc window-arm-msvc
