@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    uses: InfinityIntegral/SGEXTN/.github/workflows/build.yaml@main
+    uses: InfinityIntegral/SGEXTN/.github/workflows/BuildLah.yaml@main
     with:
       app-name: colours-plus-plus
       app-version: 2.0.0
