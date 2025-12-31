@@ -38,7 +38,7 @@ void SGCLPPresetsSelectionPage::cancelPresetSelection(){
 }
 
 void SGCLPPresetsSelectionPage::useSavedPreset(const SGXString &filePath){
-    const SGXFile file(filePath);
+    const SGXFile file(filePath, SGXFile::ReadOnly);
     SGCLPOptionsPage::chosenForegroundColour = file.readColourRGBA();
     SGCLPOptionsPage::chosenBackgroundColour = file.readColourRGBA();
     const int patternIndex = file.readInt();

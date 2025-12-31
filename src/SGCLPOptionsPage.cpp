@@ -177,7 +177,7 @@ void SGCLPOptionsPage::savePresets(){
     const SGXString fileName = SGXFileSystem::joinFilePaths(SGXFileSystem::userDataFilePath, SGXTimeStamp::now().getFileNameCorrectToSecondSeparated('_') + ".sg");
     if(SGXFileSystem::fileExists(fileName)){return;}
     SGXFileSystem::createFile(fileName);
-    const SGXFile file(fileName);
+    const SGXFile file(fileName, SGXFile::WriteOnly);
     file.writeColourRGBA(SGCLPOptionsPage::chosenForegroundColour);
     file.writeColourRGBA(SGCLPOptionsPage::chosenBackgroundColour);
     if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Circle){file.writeInt(1);}
