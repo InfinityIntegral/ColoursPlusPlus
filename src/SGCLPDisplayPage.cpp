@@ -14,21 +14,22 @@
 SGWBackground* SGCLPDisplayPage::instance = nullptr;
 int SGCLPDisplayPage::time = 0;
 SGXTimer* SGCLPDisplayPage::timer = nullptr;
-SGWWidget* SGCLPDisplayPage::progressBar = nullptr;
+SGWBlankWidget* SGCLPDisplayPage::progressBar = nullptr;
 
 SGWBackground* SGCLPDisplayPage::initialise(){
-    SGWBackground* bg = new SGWPageBackground(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 8);
+    SGWBackground* bg = new SGWPageBackground(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f);
     SGCLPDisplayPage::time = 0;
-    SGCLPDisplayPage::progressBar = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 6);
+    SGCLPDisplayPage::progressBar = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f);
+    (*SGCLPDisplayPage::progressBar).setThemeColour(5);
     SGCLPDisplayPage::timer = new SGXTimer(1.0f, &SGCLPDisplayPage::updateProgressBar);
     if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Circle){new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPCircleDisplay(SGCLPOptionsPage::chosenBackgroundColour), nullptr);}
     else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Polygon){
-        SGWBlankWidget* w = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, -1);
+        SGWBlankWidget* w = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f);
         (*w).setColour(SGCLPOptionsPage::chosenBackgroundColour);
         new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPPolygonDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);
     }
     else if(SGCLPOptionsPage::chosenPattern == SGCLPOptionsPage::Star){
-        SGWBlankWidget* w = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, -1);
+        SGWBlankWidget* w = new SGWBlankWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f);
         (*w).setColour(SGCLPOptionsPage::chosenBackgroundColour);
         new SGRRendererWidget(bg, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, -1.0f, new SGCLPStarDisplay(SGCLPOptionsPage::chosenVertexCount, SGCLPOptionsPage::chosenForegroundColour), nullptr);
     }

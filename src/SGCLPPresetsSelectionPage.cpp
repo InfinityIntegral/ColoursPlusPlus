@@ -15,8 +15,8 @@ SGWBackground* SGCLPPresetsSelectionPage::instance = nullptr;
 SGWWidget* SGCLPPresetsSelectionPage::listBackground = nullptr;
 
 SGWBackground* SGCLPPresetsSelectionPage::initialise(){
-    SGWBackground* bg = new SGWPageBackground(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 8);
-    SGWScrollView* scrollView = new SGWScrollView(bg, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.5f, 8);
+    SGWBackground* bg = new SGWPageBackground(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f);
+    SGWScrollView* scrollView = new SGWScrollView(bg, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.5f);
     SGCLPPresetsSelectionPage::listBackground = scrollView;
     new SGWTextButton(bg, "cancel", &SGCLPPresetsSelectionPage::cancelPresetSelection, 0.0f, 0.0f, 1.0f, -1.0f, 1.0f, 0.0f, 0.0f, 1.0f);
     SGLArray<SGXString> filesList = SGXFileSystem::getFilesListWithExtension(SGXFileSystem::userDataFilePath, "sg");

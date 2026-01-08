@@ -2,7 +2,7 @@
 #define SGCLPDISPLAYPAGE_H
 
 class SGWBackground;
-class SGWWidget;
+class SGWBlankWidget;
 class SGXTimer;
 class SGCLPDisplayPage {
 public:
@@ -11,7 +11,7 @@ public:
     static void activate();
     static int time;
     static SGXTimer* timer;
-    static SGWWidget* progressBar;
+    static SGWBlankWidget* progressBar;
     static void updateProgressBar();
 };
 

@@ -43,7 +43,7 @@ void SGCLPOptionsPage::activate(){
 }
 
 SGWBackground* SGCLPOptionsPage::initialise(){
-    SGWBackground* bg = new SGWScrollView(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 20.0f, 0.0f, 0.5f, 8);
+    SGWBackground* bg = new SGWScrollView(SGWWidget::parentWidget, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 20.0f, 0.0f, 0.5f);
     new SGWTextLabel(bg, "Preferences", 0.0f, 0.5f, 0.0f, 0.5f, 1.0f, -1.0f, 0.0f, 1.5f, SGWHorizontalAlignment::Center, false);
     new SGWTextButton(bg, "use preset", &SGCLPPresetsSelectionPage::activate, 0.0f, 0.5f, 0.0f, 2.5f, 1.0f, -1.0f, 0.0f, 1.0f);
     new SGWTextLabel(bg, "foreground colour:", 0.0f, 0.5f, 0.0f, 4.5f, 0.5f, -0.6f, 0.0f, 1.0f, SGWHorizontalAlignment::Right, false);
@@ -73,7 +73,7 @@ SGWBackground* SGCLPOptionsPage::initialise(){
     (*SGCLPOptionsPage::patternFractalButton).attachedInt = 0;
     new SGWTextLabel(bg, "number of vertices:", 0.0f, 0.5f, 0.0f, 14.5f, 0.5f, -0.6f, 0.0f, 1.0f, SGWHorizontalAlignment::Right, false);
     new SGWTextLabel(bg, "(not applicable)", 0.5f, 0.1f, 0.0f, 14.5f, 0.5f, -0.6f, 0.0f, 1.0f, SGWHorizontalAlignment::Left, false);
-    SGCLPOptionsPage::polygonSideCountInput = new SGWTextInput(bg, &SGCLPOptionsPage::polygonSideCountCheck, 0.5f, 0.1f, 0.0f, 14.5f, 0.5f, -0.6f, 0.0f, 1.0f);
+    SGCLPOptionsPage::polygonSideCountInput = new SGWTextInput(bg, "vertex count", &SGCLPOptionsPage::polygonSideCountCheck, 0.5f, 0.1f, 0.0f, 14.5f, 0.5f, -0.6f, 0.0f, 1.0f);
     SGCLPOptionsPage::polygonSideCountWarning = new SGWTextLabel(bg, "integer 3 or above", 0.5f, 0.1f, 0.0f, 15.5f, 0.5f, -0.6f, 0.0f, 0.75f, SGWHorizontalAlignment::Left, true);
     new SGWTextButton(bg, "save current settings as preset", &SGCLPOptionsPage::savePresets, 0.0f, 0.5f, 0.0f, 17.0f, 1.0f, -1.0f, 0.0f, 1.0f);
     new SGWTextButton(bg, "save preferences and continue", &SGCLPOptionsPage::submitOptions, 0.0f, 0.5f, 0.0f, 18.5f, 1.0f, -1.0f, 0.0f, 1.0f);
